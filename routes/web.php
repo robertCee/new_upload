@@ -21,15 +21,6 @@ use App\Http\Controllers\StudentInfoController;
 
 Route::get('/view-students', [StudentInfoController::class, 'index']);
 Route::post('/store-new-student', [StudentInfoController::class, 'store']);
-
 Route::delete('/delete-this-student/{id}', [StudentInfoController::class, 'destroy']);
+// Route::update('/edit-this-student/{id}', [StudentInfoController::class, 'update']);
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});

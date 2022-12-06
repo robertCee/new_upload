@@ -1,81 +1,42 @@
-@extends('students.layout')
-@section('tittle', 'Add Student Record')
-@section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-        <br><br>
-            <h2>Add New Student</h2>
+<!-- Modal -->
+<div class="modal fade" id="addNewStudent" tabindex="-1" aria-labelledby="addNewStudentLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create Student</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="pull-right">
-            <br><br>
-            <a class="btn btn-primary" href="{{ route('students.index') }}"> Back</a>
+        <div class="modal-body">
+              <form action="{{ url('/store-new-student') }}" method="POST">
+                  @csrf
+                  <div class="mb-3">
+                    <label for="exampleInput" class="form-label">Student Name</label>
+                    <input type="text" class="form-control" name="student_name">
+                  </div>
+                  <div class="mb-3">
+                      <label for="exampleInput1" class="form-label">College</label>
+                      <input type="text" class="form-control" name="college">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInput" class="form-label">Program</label>
+                      <input type="text" class="form-control" name="program">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInput" class="form-label">Course Code</label>
+                      <input type="text" class="form-control" name="course_code">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInput" class="form-label">Course Name</label>
+                      <input type="text" class="form-control" name="course_name">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                </form>
         </div>
+      </div>
     </div>
-</div>
-   
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
-<br>
-<form action="{{ route('students.store') }}" method="POST">
-    @csrf
-<div>
-     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Student Number</strong>
-                <input type="text" name="student_number" class="form-control" placeholder="Student Number">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>College</strong>
-                <input type="text" name="college" class="form-control" placeholder="College">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Program</strong>
-                <input type="text" name="program" class="form-control" placeholder="Program">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Course Code</strong>
-                <input type="text" name="course_code" class="form-control" placeholder="Course Code">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Course Name</strong>
-                <input type="text" name="course_name" class="form-control" placeholder="Course Name">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Date Enrolled</strong>
-                <input type="text" name="date_enroll" class="form-control" placeholder="Date Enrolled">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>
-</div>
-</form>
-@endsection
+  </div>
+  
