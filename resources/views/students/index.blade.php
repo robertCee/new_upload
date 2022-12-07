@@ -11,7 +11,8 @@
 <body>
 <div class="container">
     <div class="mt-5">
-        {{-- Tatawagin ng button na to yung modal na gagawin natin  --}}
+        <h1>STUDENT INFORMATION SYSTEM</h1>
+        <br>
         <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addNewStudent">Add new</button>
     </div>
     <div class="card shadow border-0 mt-2">
@@ -45,9 +46,6 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <div>
-                                        {{-- bale kunin mo lang yung unique id ni student sa student table at yun ang ipasa mo sa url  --}}
-                                        {{-- method POST tapos add ka netong blade directives na @method('DELETE') para malaman niya na delete ang 
-                                        gagawin mo --}}
                                         <form action="{{ url('/delete-this-student', $student->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -68,9 +66,7 @@
             </div>
         </div>
     </div>
-    {{-- External modals --}}
 
-    {{-- i call lang dito yung modal na ginawa natin sa students/modal/create  --}}
     @include('students.modals.create')
     @include('students.modals.edit')
 </div>
